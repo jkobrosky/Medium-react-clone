@@ -1,0 +1,94 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.header {
+	height: 65px;
+	display: flex;
+}
+
+.center-header-container {
+	display: flex;
+	flex: .73;
+}
+
+.small-icon {
+	flex: 1;
+	margin: auto 7px;
+}
+
+.small-avatar-header-image {
+	margin: 15px;
+	border-radius: 3px;
+	max-height: 32px;
+	max-width: 32px;
+}
+
+.avatar-text-header {
+	font-family: 'Open Sans';
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	flex: .5;
+}
+
+.top-line-header {
+	font-size: .7em;
+	color: #d3d3d3;	
+}
+
+.bottom-line-header {
+	font-size: .8em;
+	color: #000;
+}
+
+.search-signup-container {
+	background: #fff;
+	margin: auto;
+	display: flex;
+	align-self:flex-end;
+	margin-right: 5px;
+}
+
+.search-box {
+	height: 38px;
+	width: 217px;
+	font-size: .8em;
+	background: url(file:///Users/josephkobrosky/GitHub/DevMountain/React-Clone/images/small-search.png) left center no-repeat;
+	font-family: 'Open Sans';
+	color: #000;
+	border: 1px solid #d8d8d8;
+	margin: auto;
+	padding-left: 15px;
+	border-radius: 24px;
+}
+
+.signup {
+	margin-left: 10px;
+}
+
+.signup-btn {
+	height: 38px;
+	width: 132px;
+	background: #fff;
+	font-size: .8em;
+	color: #a9d8b2;
+	border: 1px solid #a9d8b2;
+	border-radius: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
