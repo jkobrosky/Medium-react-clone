@@ -3,7 +3,11 @@
 	<head>
 		<title>React Components - React Tutorials - Medium</title>
 		<link href='style.css' rel='stylesheet'>
+
+		<!-- Font Styles -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+		<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:300' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
@@ -39,6 +43,224 @@
 			</div> <!-- End of 'search-signup-container' -->
 
 		</div> <!-- End of 'header' -->
+
+		<!-- END OF HEADER SECTION -->
+
+		<div class='main-content-container'>
+
+			<div class='main-column'>
+
+				<div class='text-content'>
+					<h2 class='graf-h2 graf-first'>React Components</h2>
+
+					<p class='graf-p'>Components are the smallest, yet most fundamental part of React. They’re similar, in concepts, to things like widgets and modules. React defines itself as a <em class='markup-em-p'>library for building user interfaces</em>. As such, when you think of a user interface you want to build (with React), you need to think of it in terms of the smallest possible components that you can define.</p>
+
+					<p class='graf-p'>These components include code which defines how DOM elements are created and how users can interact with them. Components can be defined purely in JavaScript or they can be defined in a superset (or extended variation) of JavaScript called JSX. If you decide to use JSX for your component definitions, you may also need a compiler application, but we’ll get to that in a minute.</p>
+
+					<blockquote class='graf-blockquote'>We’re going to be referring to 
+						<strong class='markup-strong-p'>pure JavaScript</strong> as 
+						<strong class='markup-strong-p'>JS</strong> and 
+						<strong class='markup-strong-p'>the React version of JavaScript</strong> as 
+						<strong class='markup-strong-p'>JSX.</strong> 
+					</blockquote>
+
+					<blockquote class='graf-blockquote'>
+						You can find the accompanying source-code, for this tutorial, at: 
+						<strong class='markup-strong-p'>https://github.com/formativ/tutorial-react-components.</strong>
+					</blockquote>
+
+					<blockquote class='graf-blockquote'>
+						Please post any errors you find, or questions you have as comments on this article or as issues on GitHub. 
+					</blockquote>
+
+					<blockquote class='graf-blockquote'>
+						Thanks to 
+						<strong class='markup-strong-p'>Pete Hunt</strong> for helping to improve this!
+					</blockquote>
+
+					<h3 class='graf-h3'>Embedded HTML</h3>
+
+					<p class='graf-p graf-empty'>
+						<br>
+					</p>
+
+					<p class='graf-p'>If you’ve been developing websites for a while, you may have flinched when I spoke about using HTML within your JavaScript. For the longest time, a development paradigm has existed which says that you should split HTML and JavaScript. Words like 
+						<strong class='markup-strong-p'>unobtrusive</strong>
+					have been repurposed to express this kind of separation. That is exactly how I felt, until I started working with React.</p>
+
+					<p class='graf-p'>The reason this paradigm exists is to decrease coupling (how much things depend on each other) and increase cohesion (how well different things work together). So we have created an environment in which we try our best to make HTML (and templates) as free of logic as possible. We then need to attach behaviour to this in the form of external scripts.</p>
+
+					<p class='graf-p'>There are trade-offs with this approach to doing things. For starters, it takes more effort trying to keep these two things separate. There are many template engines and languages. There are also many template parsers to handle them all. And yet these languages (with the exception of HTML) still seem to include a modicum of logical operations…</p>
+
+					<p class='graf-p'>JavaScript, we have to know about HTML and/or templates. How else can we know what to display and where to display it? We could load external templates, via additional HTTP requests, but how would we know where to put it without some knowledge of the DOM? We could load templates embedded within special script tags, but we would first need to fetch the contents of those script tags.</p>
+
+					<p class='graf-p'>This brings us to the biggest problem with the separation of HTML and JavaScript: The only way we can get elements to attach behaviour to, and read data from, is by knowing about HTML elements in the document. Libraries like jQuery are built around the idea that HTML elements are only a CSS selector away from JavaScript.</p>
+
+					<blockquote class='graf-blockquote'>
+						These points from from a presentation I found at: http://www.slideshare.net/floydophone/react-preso-v2.
+					</blockquote>
+
+					<h3 class='graf-h3'>Components</h3>
+
+					<p class='graf-p graf-empty'>
+						<br>
+					</p>
+
+					<p class='graf-p'>Hopefully you’re willing to try this whole embedded HTML thing. In case not, I will create JS examples along with the JSX examples in this tutorial Let’s look at a simple component, just to get a feel for how one defines them:</p>
+
+					<pre class='graf-pre'>
+						/**
+						<br>
+						* @jsx React.DOM
+						<br>
+						*/
+						<br>
+						<br>
+						var HelloWorld = React.createClass({
+						<br>
+							render : function() {
+						<br>
+								return &lt;div&gt;hello world!&lt;/div&gt;
+						<br>
+						}
+						<br>
+						});
+						<br>
+						<br>
+						React.renderComponent(
+						<br>
+							&lt;HelloWorld /&gt;,
+						<br>
+							document.body
+						<br>
+						);
+					</pre>
+
+					<p class='graf-p'>The same code, in pure JavaScript looks much the same:</p>
+
+					<pre class='graf-pre'>
+						var HelloWorld = React.creatClass({
+						<br>
+							render : function() {
+						<br>
+								return React.DOM.div({
+						<br>
+									children : "hello world!"
+						<br>
+								});
+						<br>
+							}
+						<br>
+						});
+						<br>
+						<br>
+						React.renderComponent(
+						<br>
+							HelloWorld({}),
+						<br>
+							document.body
+						<br>
+						);
+					</pre>
+
+					<p class='graf-p'>This is possible because JSX isn’t run directly in the browser. It may look that way in some examples, but there’s a script which converts JSX syntax into JS. For this to work, all the special JSX syntax needs to have a JS implementation. When you’re developing in JSX, you’re really just developing in an extended version of JavaScript.</p>
+
+					<p class='graf-p'>You may also notice that the comment we began 
+						with, which had 
+						<strong class='markup-strong-p'>@jsx React.DOM</strong> in it, wasn’t required in the JS implementation. This is because the parser needs to see that in order for it to convert the JSX syntax to JS. Whether you are loading JSX from script elements within the same document, or loading external JSX scripts, you should always include this comment at the top of the script file.</p>
+
+					<blockquote class='graf-blockquote'>The 
+						<strong class='markup-strong-blockquote'>@jsx</strong> directive will allow you to run the parser tool on all your JS and JSX scripts, affecting only the JSX scripts.
+					</blockquote>
+
+					<p class='graf-p'>Ignoring the React.DOM.div stuff, there’s not a lot to defining a component. Components will most often generate HTML for an interface. This is why we defined a render() method (on the JSON object we passed to the React.createClass() method).
+					</p>
+
+					<h3 class='graf-h3'>Conclusion</h3>
+
+					<p class='graf-p graf-empty'>
+						<br>
+					</p>
+
+					<p class='graf-p'>Components are at the heart of React, and understanding them is essential to understanding how to build solid React interfaces. We’ve taken a brief look at a few examples, but there’s so much more to components. Stay tuned!
+					</p>
+
+					<p class='graf-p graf-last'>If you enjoyed this tutorial; it would be helpful if you could click the Recommend button and share it with other developers.
+					</p>
+				</div> <!-- End of 'text-content' -->
+
+				<div class='footer-container'>
+
+					<div class='footer'>
+
+						<div class='recommend-container'>
+
+							<div class='recommend-btn'>
+
+								<button class='rmd-btn' type='button'>Recommend</button>
+								<span class='rmd-btn-label'>Joseph Kobrosky <em class='rmd-btn-em'> and </em> 44 <em class='rmd-btn-em'>others Recommended</em></span>
+
+							</div> <!-- End of 'recommend-btn' -->
+						</div> <!-- End of 'recommend-container' -->
+
+							<div class='button-set'>
+
+								<div class='btn-holder'>
+									<button class='btn-bookmark btn-item' type='button'></button>
+									<span class='btn-label'>Bookmark</span>
+								</div>
+
+								<div class='btn-holder'>
+									<button class='btn-share btn-item' type='button'></button>
+									<span class='btn-label'>Share</span>
+								</div>
+
+								<div class='btn-holder'>
+									<button class='btn-more btn-item' type='button'></button>
+									<span class='btn-label'>More</span>
+								</div>
+
+						</div> <!-- End of 'button-set' -->
+
+					</div> <!-- End of 'footer' -->
+
+				</div> <!-- End of 'footer-container' -->
+
+			</div> <!-- End of 'main-column' -->
+
+		</div> <!-- End of 'main-content-container' -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	</body>
 </html>
