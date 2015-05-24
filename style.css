@@ -302,9 +302,61 @@ div.bot-bar-container::after {
 }
 
 .legalese {
-	padding: 20px;
+	margin-top: -10px;
+	margin-left: 75px;
+	margin-bottom: 50px;
 	border-bottom: 1px solid rgba(0,0,0,0.2)
 }
+
+.bottom-fixed-bar {
+	min-height: 50px;
+	border-top: 1px solid rgba(0,0,0,0.2);
+	background: #fff;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+
+.bottom-fixed-bar-left-container {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	margin: 10px;
+}
+
+.bot-bar-small-avatar {
+	max-width: 32px;
+	max-height: 32px;
+	margin: 0 5px;
+}
+
+.bot-bar-img {
+	margin: 0 5px;
+}
+
+.bot-bar-img-item {
+	max-width: 32px;
+	max-height: 32px;
+	border-radius: 16px;
+	margin: 0 5px;
+}
+
+.bot-bar-text-group {
+	display: flex;
+	margin: auto 5px;
+}
+
+.bot-bar-subtext {
+	font-size: 13px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.author-name {
+	color: #57ad68;
+}
+
+
+/******************** END OF STYLING SELECTORS ********************/
 
 @media screen and (max-width: 767px) {
 	.main-column {
@@ -389,6 +441,10 @@ div.bot-bar-container::after {
 		font-size: 18px;
 		line-height: 1.5;
 		margin-bottom: 30px;
+	}
+
+	.bottom-fixed-bar {
+		display: none;
 	}
 }
 
