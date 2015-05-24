@@ -324,6 +324,12 @@ div.bot-bar-container::after {
 	margin: 10px;
 }
 
+.bottom-fixed-bar-right-container {
+	float: right;
+	margin-top: -40px;
+	margin-right: 10px;
+}
+
 .bot-bar-small-avatar {
 	max-width: 32px;
 	max-height: 32px;
@@ -353,6 +359,17 @@ div.bot-bar-container::after {
 
 .author-name {
 	color: #57ad68;
+}
+
+.bot-bar-rmd-btn-label {
+	display: flex;
+	color: rgba(0,0,0,0.6);
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+
+.bottom-bar-icons {
+	float: right;
 }
 
 
